@@ -1,0 +1,21 @@
+<div class="cardCarousel">
+  <mat-card
+    *ngFor="let app of applications; let i = index;"
+    [ngClass]="{'activeCard': app.position=='main', 'middleCard': app.position=='middle', 'outerCard': app.position=='outer'}"
+    class="application-card"
+    (click)="onClickOnCard(app.applicationId)"
+  >
+    <div class="cardContent">
+      {{app.title}}
+
+    </div>
+  </mat-card>
+
+  <div class="positionIndicator">
+    <div
+      class="dot"
+      *ngFor="let app of allApplications"
+      [ngClass]="{'mainDot': app.position=='main'}"
+    ></div>
+  </div>
+</div>

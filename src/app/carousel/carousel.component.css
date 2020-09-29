@@ -1,0 +1,75 @@
+.cardCarousel {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 48px);
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card {
+  height: 320px !important;
+  margin: auto;
+
+}
+.application-card {
+   height: 256px;
+   margin: 12px;
+
+   transition: 500ms;
+}
+
+
+.activeCard {
+  margin: 12px 24px;
+  width: 256px;
+}
+
+.middleCard {
+  transform: scale(0.8);
+  opacity: 0.75;
+}
+
+.outerCard {
+  transform: scale(0.6);
+  opacity: 0.5;
+}
+
+
+.positionIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  height: 12px;
+  width: 128px;
+
+  margin-top: 186px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+
+  margin-left: 3px;
+  margin-right: 3px;
+
+  border-radius: 100%;
+
+  background-color: rgb(50, 50, 50);
+
+  transform: scale(0.6);
+
+}
+
+.mainDot {
+  transform: scale(1.0);
+}
