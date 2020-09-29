@@ -1,21 +1,60 @@
-<div class="cardCarousel">
+<div class="cardCarousel" *ngIf="loaded">
   <mat-card
     *ngFor="let app of applications; let i = index;"
     [ngClass]="{'activeCard': app.position=='main', 'middleCard': app.position=='middle', 'outerCard': app.position=='outer'}"
     class="application-card"
-    (click)="onClickOnCard(app.applicationId)"
+    (click)="onClickOnCard($event, app.id)"
   >
-    <div class="cardContent">
-      {{app.title}}
 
-    </div>
+    <mat-card-header class="matCardInner matCardHeader" *ngIf="app.position==='main'">
+      <mat-card-title class="matCardTitle titleOneLiner">{{app.title}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="matCardInner" *ngIf="app.position==='main'">
+      <div class="separationLine"></div>
+
+      <mat-grid-list cols="2" rowHeight="46px">
+        <mat-chip-list>
+          <mat-grid-tile colspan="1" rowspan="1"><mat-chip style="background-color: rgb(0, 95, 13);" class="statusChip" [ngClass]="{'textHidden': app.position!=='main'}">{{app.status.progress}}</mat-chip></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><mat-chip style="background-color: rgb(202, 111, 111);" class="statusChip" [ngClass]="{'textHidden': app.position!=='main'}">{{app.status.language}}</mat-chip></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><mat-chip style="background-color: rgb(26, 0, 141); margin-top: -10px;" class="statusChip" [ngClass]="{'textHidden': app.position!=='main'}">{{app.status.classification}}</mat-chip></mat-grid-tile>
+          <mat-grid-tile colspan="1" rowspan="1"><mat-chip style="background-color: rgb(131, 85, 0); margin-top: -10px;" class="statusChip" [ngClass]="{'textHidden': app.position!=='main'}">{{app.status.hostType}}</mat-chip></mat-grid-tile>
+        </mat-chip-list>
+      </mat-grid-list>
+
+      <div class="separationLine"></div>
+
+
+      <section class="appDescSection">
+        {{app.desc}}
+      </section>
+    </mat-card-content>
+
+    <mat-card-actions class="cardActions matCardInner" *ngIf="app.position==='main'">
+      <button  mat-mini-fab color="primary" matTooltip="github repository" matTooltipPosition="above" class="linkBtn" (click)="onOpenLink($event, app.gitLink)"><img class="githubIcon" src="../../assets/github.svg"></button>
+      <button  mat-mini-fab color="primary" matTooltip="direct link (new window)" matTooltipPosition="above" class="linkBtn" (click)="onOpenLink($event, app.directLink)" [disabled]="!app.directLink"><mat-icon>link</mat-icon></button>
+    </mat-card-actions>
+
+
+      <mat-grid-list class="cardInfoGrid matCardInner" *ngIf="app.position!=='main'" cols="1" rowHeight="6px">
+        <mat-grid-tile colspan="1" rowspan="10">
+          <mat-card-header class="matCardHeaderCenter" *ngIf="app.position!=='main'">
+            <mat-card-title class="matCardTitle titleCentered">{{app.title}}</mat-card-title>
+          </mat-card-header>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="1">
+            <div class="separationLine"></div>
+          </mat-grid-tile>
+
+          <mat-grid-tile colspan="1" rowspan="10">
+            <mat-icon matTooltip="click to switch view to this application" matTooltipPosition="below" class="infoIcon">info_outline</mat-icon>
+          </mat-grid-tile>
+      </mat-grid-list>
   </mat-card>
 
   <div class="positionIndicator">
-    <div
-      class="dot"
-      *ngFor="let app of allApplications"
-      [ngClass]="{'mainDot': app.position=='main'}"
+    <div class="dot" *ngFor="let app of allApplications" [ngClass]="{'mainDot': app.position=='main'}"
     ></div>
   </div>
 </div>

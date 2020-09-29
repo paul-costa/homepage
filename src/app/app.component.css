@@ -1,7 +1,19 @@
-.example-spacer {
-  flex: 1 1 auto;
+app-contact, router-outlet {
+  position: absolute;
+  width: 100%;
 }
 
-mat-toolbar {
-  height: 48px;
+app-contact {
+  z-index: 2;
+}
+
+.creditsLink {
+  position: absolute;
+  bottom: 24px;
+  font-size: 8pt;
+  z-index: 2;
+  text-align: center;
+  color: rgb(225, 225, 225);
+
+  width: 100%;
 }

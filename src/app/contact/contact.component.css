@@ -1,0 +1,42 @@
+.contactSectionBar {
+  /* background: rgb(240,240,240); */
+  /* background: linear-gradient(0deg, rgba(240,240,240,1) 0%, rgba(75,75,75,1) 40%, rgba(75,75,75,1) 50%, rgba(75,75,75,1) 60%, rgba(240,240,240,1) 100%); */
+
+  /* -webkit-box-shadow: 1px 3px 5px 0px rgba(240,240,240,1); */
+  /* -moz-box-shadow: 1px 3px 5px 0px rgba(240,240,240,1); */
+  /* box-shadow: 1px 3px 5px 0px rgba(240,240,240,1); */
+
+  /* border-radius: 6px; */
+  /* padding: 6px; */
+
+  width: 332px;
+  margin: 128px auto;
+}
+
+.fabBtn {
+  background-color: rgb(50, 50, 50);
+  margin: 0 12px;
+  color: rgb(240, 240, 240);
+
+  border: 1px solid rgb(125, 125, 125);
+
+  transition: 500ms;
+}
+
+.fabBtn:hover {
+  transform: scale(1.2);
+}
+
+.githubIcon, .linkedinIcon {
+  width: 22px;
+  height: 22px;
+
+  filter: invert(0.9);
+
+  position: relative;
+  top: -2px;
+}
+
+mat-icon {
+  transform: scale(1.5);
+}

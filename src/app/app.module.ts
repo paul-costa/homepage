@@ -12,18 +12,33 @@ import { CarouselComponent } from './carousel/carousel.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ContactComponent } from './contact/contact.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 const materialModules = [
   MatCardModule,
   MatToolbarModule,
   MatIconModule,
+  MatGridListModule,
+  MatChipsModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatDialogModule,
 ]
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent
+    CarouselComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

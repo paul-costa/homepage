@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,87 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  public allApplications = [
-    {
-      title: 'First Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-    {
-      title: 'Second Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-    {
-      title: 'Third Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-    {
-      title: 'Fourth Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-    {
-      title: 'Fifth Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-    {
-      title: 'Sixth Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-    {
-      title: 'Seventh Application',
-      logoUrl: '',
-      desc: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      directLink: '',
-      githubLink: '',
-      applicationId: undefined,
-      position: undefined,
-    },
-  ]
 
-  public applications = []
+  public loaded = false;
 
-  constructor() { }
+  public allApplications = [];
+  public applications = [];
+
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.selectApplications();
+    this.loadAppProjects();
+
+  }
+
+
+  private loadAppProjects() {
+    this.sharedService.getAppProjects().then(appProjects => {
+      this.allApplications = appProjects;
+      this.selectApplications();
+      this.loaded = true;
+    })
   }
 
 
   private selectApplications() {
-    for(let i = 0; i < this.allApplications.length; i++) {
-      this.allApplications[i].applicationId = i;
+    for (let i = 0; i < this.allApplications.length; i++) {
+      this.allApplications[i].id = i;
     }
 
-    this.applications = this.allApplications.filter(app => app.applicationId<5);
+    this.applications = this.allApplications.filter(app => app.id<5);
 
     this.applyAppElStyles();
   }
@@ -95,8 +44,7 @@ export class CarouselComponent implements OnInit {
 
 
   private applyAppElStyles(edgeIndex?: -2 | -1 | 1 | 2) {
-
-    if(edgeIndex) {
+    if (edgeIndex) {
       for(let i=0; i<this.applications.length; i++) {
         // mark all outer
         this.applications[i].position = 'outer';
@@ -128,7 +76,12 @@ export class CarouselComponent implements OnInit {
   }
 
 
-  public onClickOnCard(applicationId: number) {
+  public onClickOnCard(event, id: number) {
+    if (id === this.applications.find(app => app.position === 'main').id) {
+      event.stopPropagation();
+      return;
+    }
+
     // make all outer for slow transition
     for(let i=0; i<this.applications.length; i++) {
       this.applications[i].position = 'outer';
@@ -137,20 +90,20 @@ export class CarouselComponent implements OnInit {
     // change positions
     setTimeout(() => {
       // get 5 element array from clicked element in the middle
-    if(applicationId+2 < this.allApplications.length && applicationId-2 > 0) {
+    if(id+2 < this.allApplications.length && id-2 > 0) {
       // if element is not on the edge
       this.applications = this.allApplications.filter(appEl => {
-        if(appEl.applicationId <= applicationId+2 && appEl.applicationId >= applicationId-2) {
+        if(appEl.id <= id+2 && appEl.id >= id-2) {
           return appEl;
         }
       });
       this.applyAppElStyles();
-    } else if (applicationId+1 <= this.allApplications.length && applicationId-1 >= 0) {
+    } else if (id+1 <= this.allApplications.length && id-1 >= 0) {
       // if element has only one neighbor on one side
-      if(applicationId > this.allApplications.length/2 + 1) {
+      if(id > this.allApplications.length/2 + 1) {
         // right side
         this.applications = this.allApplications.filter(appEl => {
-          if(appEl.applicationId <= applicationId+1 && appEl.applicationId >= applicationId-3) {
+          if(appEl.id <= id+1 && appEl.id >= id-3) {
             return appEl;
           }
         });
@@ -158,7 +111,7 @@ export class CarouselComponent implements OnInit {
       } else {
         // left side
         this.applications = this.allApplications.filter(appEl => {
-          if(appEl.applicationId <= applicationId+3 && appEl.applicationId >= applicationId-1) {
+          if(appEl.id <= id+3 && appEl.id >= id-1) {
             return appEl;
           }
         });
@@ -166,16 +119,16 @@ export class CarouselComponent implements OnInit {
       }
     } else {
       // if element has no neighbors on one side
-      if(applicationId > this.allApplications.length/2 + 1) {
+      if(id > this.allApplications.length/2 + 1) {
         this.applications = this.allApplications.filter(appEl => {
-          if(appEl.applicationId <= applicationId && appEl.applicationId >= applicationId-4) {
+          if(appEl.id <= id && appEl.id >= id-4) {
             return appEl;
           }
         });
         this.applyAppElStyles(-2);
       } else {
         this.applications = this.allApplications.filter(appEl => {
-          if(appEl.applicationId <= applicationId+4 && appEl.applicationId >= applicationId) {
+          if(appEl.id <= id+4 && appEl.id >= id) {
             return appEl;
           }
         });
@@ -186,5 +139,30 @@ export class CarouselComponent implements OnInit {
     }, 500);
 
 
+  }
+
+
+  public onOpenLink(event, link) {
+    event.stopPropagation();
+
+    this.spinActiveCard();
+
+    if(link.includes('github.com')) {
+      this.sharedService.openSnackBar('selected github repo will open in new tab', 'ok');
+    } else {
+      this.sharedService.openSnackBar('selected web app will open in new tab', 'ok');
+    }
+
+    setTimeout(() => {
+      window.open(link, '_blank');
+    }, 1000);
+  }
+
+  private spinActiveCard() {
+    document.getElementsByClassName('activeCard')[0].classList.add('spinCardFast');
+
+    setTimeout(() => {
+      document.getElementsByClassName('activeCard')[0].classList.remove('spinCardFast');
+    }, 2000);
   }
 }
