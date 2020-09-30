@@ -38,7 +38,7 @@ export class RestService {
             status: {progress: 'finished', language: 'angular', classification: 'private', hostType: 'firebase'},
             desc: 'angular derivate of weather.design-v1 web application. darksky weather and google geocoding api & firebase backend',
             gitLink: 'https://github.com/paul-costa/weather.design-v2',
-            directLink: 'https://projects.paulcosta.at/weather-design-v2',
+            directLink: 'https://weather-design.firebaseapp.com/',
             additionInfo: null,
           },
           {
@@ -47,7 +47,7 @@ export class RestService {
             status: {progress: 'finished', language: 'angular/ionic', classification: 'private', hostType: 'not-hosted'},
             desc: 'derivate of weather.design-v2 web application with mobile first approach (incl. capacitor support). darksky weather and google geocoding api & firebase backend',
             gitLink: 'https://github.com/paul-costa/weather.design-v3',
-            directLink: 'https://projects.paulcosta.at/weather-design-v3',
+            directLink: null,
             additionInfo: null,
           },
           {
@@ -179,7 +179,7 @@ export class RestService {
         ];
 
         resolve(appProjects);
-      }, 1000);
+      }, 10);
     });
   }
 }
