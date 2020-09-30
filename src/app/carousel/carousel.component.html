@@ -1,3 +1,5 @@
+<app-contact *ngIf="loaded"></app-contact>
+
 <div class="cardCarousel" *ngIf="loaded">
   <mat-card
     *ngFor="let app of applications; let i = index;"

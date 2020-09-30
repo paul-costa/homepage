@@ -1,19 +1,25 @@
-app-contact, router-outlet {
+.linksContainer{
   position: absolute;
-  width: 100%;
-}
-
-app-contact {
-  z-index: 2;
-}
-
-.creditsLink {
-  position: absolute;
-  bottom: 24px;
-  font-size: 8pt;
-  z-index: 2;
   text-align: center;
-  color: rgb(225, 225, 225);
-
+  bottom: 24px;
+  z-index: 2;
   width: 100%;
+}
+
+.creditsLink, .legalLink {
+  font-size: 8pt;
+  color: rgb(225, 225, 225);
+  transition: 500ms;
+  cursor: pointer;
+
+  margin: 0 12px;
+}
+
+.creditsLink:hover, .legalLink:hover {
+  font-size: 10pt;
+
+  border: 1px solid rgb(100, 100, 100);
+  padding: 6px;
+  border-radius: 6px;
+
 }

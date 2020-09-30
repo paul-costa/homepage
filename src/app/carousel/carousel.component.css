@@ -1,3 +1,10 @@
+app-contact {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+
 .cardCarousel {
   position: absolute;
   width: 100%;
