@@ -1,0 +1,50 @@
+<div class="coverletterContainer">
+  <div class="coverletterBox">
+
+    <mat-grid-list cols="12" rowHeight="24px">
+      <mat-grid-tile class="textTile" colspan="12" rowspan="18">
+        <mat-card class="textCard">
+          <mat-card-header style="justify-content: center;">
+            <mat-card-title><i>cover letter</i></mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content class="textCardContent">
+            {{cardContent}}
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="pdfTile" colspan="3" rowspan="6">
+        <button mat-fab color="accent">
+          <mat-icon>save</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="progressTile" colspan="6" rowspan="6">
+        <mat-progress-spinner class="progressSpinner" color="primary" mode="determinate" [value]="textProgress"></mat-progress-spinner>
+
+        <div class="progressSpinnerActions">
+          <button class="progressBtn" mat-mini-fab color="primary" *ngIf="progressBtnMode==='skip'">
+            <mat-icon>skip_next</mat-icon>
+          </button>
+
+          <button class="progressBtn" mat-mini-fab color="primary" *ngIf="progressBtnMode==='pause'">
+            <mat-icon>pause</mat-icon>
+          </button>
+        </div>
+
+      </mat-grid-tile>
+
+      <mat-grid-tile class="speedTile" colspan="3" rowspan="6">
+        <button mat-fab color="accent" style="margin: 0 6px 0 0;">
+          <mat-icon>arrow_circle_down</mat-icon>
+        </button>
+
+        <button mat-fab color="accent" style="margin: 0 0 0 6px;">
+          <mat-icon>arrow_circle_up</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </div>
+</div>

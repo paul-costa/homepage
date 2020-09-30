@@ -19,7 +19,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { ContactComponent } from './contact/contact.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { CoverletterComponent } from './coverletter/coverletter.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const materialModules = [
   MatCardModule,
@@ -31,6 +32,7 @@ const materialModules = [
   MatTooltipModule,
   MatSnackBarModule,
   MatDialogModule,
+  MatProgressSpinnerModule
 ]
 
 
@@ -38,7 +40,8 @@ const materialModules = [
   declarations: [
     AppComponent,
     CarouselComponent,
-    ContactComponent
+    ContactComponent,
+    CoverletterComponent
   ],
   imports: [
     BrowserModule,

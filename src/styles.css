@@ -2,5 +2,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+
+
+  background: rgb(49,22,105);
+  background: radial-gradient(circle, rgba(49,22,105,1) 0%, rgba(40,40,40,1) 40%, rgba(115,94,158,1) 80%);
+}
+
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

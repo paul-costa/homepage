@@ -1,0 +1,49 @@
+
+.coverletterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+
+.coverletterBox {
+  width: 80%;
+  max-width: 768px;
+
+  height: 576px;
+}
+
+
+.textTile {
+
+}
+
+.textCard {
+  width: 80%;
+  height: 80%;
+
+  margin: 12px 0;
+}
+
+.textCardContent {
+  font-size: 12pt;
+}
+
+mat-card-title {
+  width: 100%;
+}
+
+
+mat-progress-spinner {
+  color: green;
+}
+
+.progressSpinnerActions {
+  position: absolute;
+}
+
+
+.progressBtn {
+}
