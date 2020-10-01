@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-coverletter',
@@ -15,7 +16,9 @@ export class CoverletterComponent implements OnInit {
 
   public cardContent: string;
 
-  constructor() { }
+  constructor(
+    private sharedService: SharedService,
+  ) { }
 
   ngOnInit(): void {
     this.coverTextArr = [
@@ -81,6 +84,20 @@ export class CoverletterComponent implements OnInit {
         clearInterval(interval);
       }
     }, intervalForSpinner);
+  }
+
+  public onBtn(value: string) {
+    let url = '';
+
+    if (value === 'download') {
+      url = 'https://github.com/paul-costa/homepage/blob/master/cover_letter.pdf';
+
+      this.sharedService.openSnackBar('you get redirected in a second', 'ok');
+
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 1000);
+    }
   }
 
 }

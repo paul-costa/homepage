@@ -15,7 +15,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile class="pdfTile" colspan="3" rowspan="6">
-        <button mat-fab color="accent">
+        <button matTooltipPosition="below" matTooltip="download cover letter" mat-fab color="accent" (click)="onBtn('download')">
           <mat-icon>save</mat-icon>
         </button>
       </mat-grid-tile>
@@ -36,11 +36,11 @@
       </mat-grid-tile>
 
       <mat-grid-tile class="speedTile" colspan="3" rowspan="6">
-        <button mat-fab color="accent" style="margin: 0 6px 0 0;">
+        <button matTooltipPosition="below" matTooltip="slow down"  mat-fab color="accent" style="margin: 0 6px 0 0;">
           <mat-icon>arrow_circle_down</mat-icon>
         </button>
 
-        <button mat-fab color="accent" style="margin: 0 0 0 6px;">
+        <button matTooltipPosition="below" matTooltip="speed up"  mat-fab color="accent" style="margin: 0 0 0 6px;">
           <mat-icon>arrow_circle_up</mat-icon>
         </button>
       </mat-grid-tile>
