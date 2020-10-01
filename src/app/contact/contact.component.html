@@ -1,7 +1,20 @@
-<div style="width: 100%; justify-content: center; align-items: center;">
+<div class="contactContainer" [ngClass]="{'fadeOut': internalRedirectTriggered}">
   <div class="contactSectionBar">
-    <button matTooltip="GitHub" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onContactBtn('github');"><mat-icon><img class="githubIcon" src="../../assets/github.svg"></mat-icon></button>
-    <button matTooltip="LinkedIn" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onContactBtn('linkedIn');"><mat-icon><img class="linkedinIcon" src="../../assets/linkedin.svg"></mat-icon></button>
-    <button matTooltip="Email" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onContactBtn('email');"><mat-icon>email</mat-icon></button>
-    <button matTooltip="Studies (MSc Innovation & Technology Management)" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onContactBtn('studies');"><mat-icon>school</mat-icon></button>  </div>
+    <button matTooltip="GitHub" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onRedirect('github');"><mat-icon><img class="githubIcon" src="../../assets/github.svg"></mat-icon></button>
+    <button matTooltip="LinkedIn" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onRedirect('linkedIn');"><mat-icon><img class="linkedinIcon" src="../../assets/linkedin.svg"></mat-icon></button>
+    <button matTooltip="Email" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onRedirect('email');"><mat-icon>email</mat-icon></button>
+    <button matTooltip="Studies (MSc Innovation & Technology Management)" matTooltipPosition="above" class="fabBtn" mat-fab (click)="onRedirect('studies');"><mat-icon>school</mat-icon></button>
+  </div>
+
+  <div class="redirectSection">
+    <button matTooltip="download resume" matTooltipPosition="below" class="fabBtn fabBtnLight" mat-fab (click)="onRedirect('resume');" (mouseenter)="assignmentHover = true" (mouseleave)="assignmentHover = false">
+      <mat-icon class="redirectIcon" *ngIf="!assignmentHover">assignment</mat-icon>
+      <mat-icon class="redirectIcon" *ngIf="assignmentHover">assignment_returned</mat-icon>
+    </button>
+
+    <button matTooltip="cover letter" matTooltipPosition="below" class="fabBtn fabBtnLight" mat-fab (click)="onRedirect('letter');" (mouseenter)="coverletterHover = true" (mouseleave)="coverletterHover = false">
+      <mat-icon class="redirectIcon" *ngIf="!coverletterHover">history_edu</mat-icon>
+      <mat-icon class="redirectIcon" *ngIf="coverletterHover">navigate_next</mat-icon>
+    </button>
+  </div>
 </div>

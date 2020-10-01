@@ -1,16 +1,28 @@
+.contactContainer {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 1s;
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
 .contactSectionBar {
-  /* background: rgb(240,240,240); */
-  /* background: linear-gradient(0deg, rgba(240,240,240,1) 0%, rgba(75,75,75,1) 40%, rgba(75,75,75,1) 50%, rgba(75,75,75,1) 60%, rgba(240,240,240,1) 100%); */
-
-  /* -webkit-box-shadow: 1px 3px 5px 0px rgba(240,240,240,1); */
-  /* -moz-box-shadow: 1px 3px 5px 0px rgba(240,240,240,1); */
-  /* box-shadow: 1px 3px 5px 0px rgba(240,240,240,1); */
-
-  /* border-radius: 6px; */
-  /* padding: 6px; */
-
   width: 332px;
-  margin: 128px auto;
+  margin: 128px auto 36px auto;
+}
+
+.redirectSection {
+  width: 332px;
+  margin: 0px auto;
+  text-align: center;
 }
 
 .fabBtn {
@@ -27,6 +39,15 @@
   transform: scale(1.2);
 }
 
+
+.fabBtnLight {
+  background-color:  rgb(240, 240, 240);
+  border: 1px solid rgb(50, 50, 50);
+
+  margin: 0 6px;
+}
+
+
 .githubIcon, .linkedinIcon {
   width: 22px;
   height: 22px;
@@ -35,6 +56,10 @@
 
   position: relative;
   top: -2px;
+}
+
+.redirectIcon {
+  color: rgb(50, 50, 50);
 }
 
 mat-icon {
