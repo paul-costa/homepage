@@ -4,7 +4,7 @@
   * line of business: employee
   * employer: <a href="https://www.bawaggroup.com/BAWAGGROUP/group/EN" >BAWAG Group</a> - <a href="https://www.bawagpsk.com/" >BAWAG P.S.K</a>
   * registered residence: Schrotzbergstraße, 1020 Vienna, Austria
-  * business email: <a href="mailto:admin@paulcosta.at">admin@paulcosta.at</a>
+  * business email: <a href="mailto:admin@costapaul.com">admin@costapaul.com</a>
 
 For more details on sensitive information like registered residence, please contact me via my business email.
 
@@ -17,6 +17,6 @@ ___
   * Unternehmensgegenstand: Angstellter
   * Arbeitgeber: <a href="https://www.bawaggroup.com/BAWAGGROUP/group/EN" >BAWAG Group</a> - <a href="https://www.bawagpsk.com/" >BAWAG P.S.K</a>
   * Eingetragener Wohnsitz: Schrotzbergstraße, 1020 Vienna, Austria
-  * Geschäfts-Email: <a href="mailto:admin@paulcosta.at">admin@paulcosta.at</a>
+  * Geschäfts-Email: <a href="mailto:admin@costapaul.com">admin@costapaul.com</a>
 
 Für weitere Details über sensitive Information wie den eingetragenen Wohnsitz, kontaktieren Sie mich bitte über meine Geschäfts-Email.
