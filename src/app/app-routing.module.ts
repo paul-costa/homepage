@@ -13,14 +13,12 @@ const routes: Routes = [
 
   {
     path: 'portfolio',
-    component: CarouselComponent,
-    pathMatch: 'full',
+    component: CarouselComponent
   },
 
   {
     path: 'letter',
-    component: CoverletterComponent,
-    pathMatch: 'full',
+    component: CoverletterComponent
   },
 ];
 
