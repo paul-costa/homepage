@@ -42,7 +42,7 @@ export class ContactComponent implements OnInit {
         break;
 
       case 'email':
-        url = 'mailto:admin@paulcosta.at';
+        url = 'mailto:admin@costapaul.com';
         break;
 
       case 'studies':
