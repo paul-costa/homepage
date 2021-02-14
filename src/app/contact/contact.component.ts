@@ -50,7 +50,7 @@ export class ContactComponent implements OnInit {
         break;
 
       case 'resume':
-        url = 'https://github.com/paul-costa/homepage/blob/master/resume.pdf';
+        url = 'https://downloads.costapaul.com/resume.pdf';
         break;
 
       default:
