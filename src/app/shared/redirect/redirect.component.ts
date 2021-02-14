@@ -20,8 +20,6 @@ export class RedirectComponent implements OnInit {
     window.open('https://downloads.paulcosta.at/' + downloadIdFromRoute, '_blank');
 
     this.router.navigate(['/']);
-
-
   }
 
 }
