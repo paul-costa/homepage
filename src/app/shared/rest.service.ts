@@ -83,7 +83,7 @@ export class RestService {
             status: {progress: 'construction', language: 'angular', classification: 'private', hostType: 'firebase'},
             desc: 'repo for the homepage of Paul Costa. only partly hosted. main attraction: portfolio carousel',
             gitLink: 'https://github.com/paul-costa/homepage',
-            directLink: 'https://paulcosta.at',
+            directLink: 'https://costapaul.com',
             additionInfo: null,
           },
           {
