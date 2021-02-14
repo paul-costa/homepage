@@ -36,7 +36,7 @@ export class CarouselComponent implements OnInit {
       this.allApplications[i].id = i;
     }
 
-    this.applications = this.allApplications.filter(app => app.id<5);
+    this.applications = this.allApplications.filter(app => app.id > 10 && app.id < 16);
 
     this.applyAppElStyles();
   }
