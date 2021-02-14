@@ -21,6 +21,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CoverletterComponent } from './coverletter/coverletter.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { RedirectComponent } from './shared/redirect/redirect.component';
 
 const materialModules = [
   MatCardModule,
@@ -41,7 +42,8 @@ const materialModules = [
     AppComponent,
     CarouselComponent,
     ContactComponent,
-    CoverletterComponent
+    CoverletterComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,

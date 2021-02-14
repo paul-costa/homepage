@@ -137,7 +137,7 @@ export class RestService {
             status: {progress: 'finished/maintenance', language: 'angular/ionic', classification: 'private', hostType: 'firebase'},
             desc: 'hybrid web/mobile frontend (incl. capacitor support) of "Kantine 4.0". communication with backend over rest interface. displays varying lunch options, which are available at the "kantine 4.0" restaurant in the icon tower in vienna (https://www.m-eventcatering.at/m-lunchsolutions/)',
             gitLink: 'https://github.com/paul-costa/kantine-4.0-frontend',
-            directLink: 'https://costapaul.com/projects/kantine-4.0',
+            directLink: 'https://projects.paulcosta.at/kantine-4.0',
             additionInfo: 'APK download available at: https://downloads.paulcosta.at/kantine-4.apk',
           },
           {
