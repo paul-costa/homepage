@@ -1,7 +1,7 @@
 ## Impressum / Legal Notice
 #### contacts website & content owner: 
   * name: Paul Costa
-  * line of business: Employee
+  * line of business: employee
   * employer: <a href="https://dataformers.at/" >dataformers.at</a>
   * registered residence: Schrotzbergstraße, 1020 Vienna, Austria
   * business email: <a href="mailto:admin@costapaul.com">admin@costapaul.com</a>
