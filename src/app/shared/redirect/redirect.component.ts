@@ -17,7 +17,7 @@ export class RedirectComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const downloadIdFromRoute = Number(routeParams.get('downloadId'));
 
-    window.open('https://downloads.paulcosta.at/' + downloadIdFromRoute, '_blank');
+    window.open('https://downloads.costapaul.com/' + downloadIdFromRoute, '_blank');
 
     this.router.navigate(['/']);
   }

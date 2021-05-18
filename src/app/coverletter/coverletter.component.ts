@@ -90,7 +90,7 @@ export class CoverletterComponent implements OnInit {
     let url = '';
 
     if (value === 'download') {
-      url = 'https://downloads.paulcosta.at/cover-letter.pdf';
+      url = 'https://downloads.costapaul.com/cover-letter.pdf';
 
       this.sharedService.openSnackBar('you get redirected in a second', 'ok');
 
