@@ -20,7 +20,7 @@ export class RestService {
             status: {progress: 'finished', language: 'html/js', classification: 'private', hostType: 'web'},
             desc: 'solution if your partner and you once again can not decide on where and what to eat',
             gitLink: 'https://github.com/paul-costa/choosemymeal',
-            directLink: 'https://projects.paulcosta.at/choose-my-meal',
+            directLink: 'https://choose-my-meal-costa.web.app',
             additionInfo: null,
           },
           {
@@ -29,7 +29,7 @@ export class RestService {
             status: {progress: 'finished', language: 'html/js', classification: 'private', hostType: 'web'},
             desc: 'the lovechild of an animated wallpaper and the weather widget on your phone. darksky weather and google geocoding api & firebase backend',
             gitLink: 'https://github.com/paul-costa/weather.design-v1',
-            directLink: 'https://projects.paulcosta.at/weather-design-v1',
+            directLink: 'https://weather-design-v1.firebaseapp.com/',
             additionInfo: null,
           },
           {
@@ -56,7 +56,7 @@ export class RestService {
             status: {progress: 'finished', language: 'html/js', classification: 'private', hostType: 'web'},
             desc: 'simulating tests with randomized order of questions and answer check',
             gitLink: 'https://github.com/paul-costa/testSimulator',
-            directLink: 'https://projects.paulcosta.at/test-simulator',
+            directLink: 'https://test-simulator-costa.web.app',
             additionInfo: null,
           },
           {
@@ -65,7 +65,7 @@ export class RestService {
             status: {progress: 'finished', language: 'html/js', classification: 'private', hostType: 'web'},
             desc: 'calculates prime numbers on client side through various techniques and algorithms',
             gitLink: 'https://github.com/paul-costa/PrimeNumberCalculator',
-            directLink: 'https://projects.paulcosta.at/prime-number-calculator',
+            directLink: 'https://prime-number-calculator-costa.web.app',
             additionInfo: null,
           },
           {
@@ -74,7 +74,7 @@ export class RestService {
             status: {progress: 'finished', language: 'vue/js', classification: 'private', hostType: 'web'},
             desc: 'this small application was a little sidestep by myself into vue-js. this application is a component of a larger application and was an exercise in some vue animation, svg path animation, etc.',
             gitLink: 'https://github.com/paul-costa/vue-floating-orbs',
-            directLink: 'https://projects.paulcosta.at/vue-floating-orb',
+            directLink: 'https://vue-floating-orb.web.app',
             additionInfo: null,
           },
           {
@@ -92,7 +92,7 @@ export class RestService {
             status: {progress: 'finished', language: 'html/js', classification: 'private', hostType: 'web'},
             desc: 'access to the pgp public key for Paul Costa to send asymmetric encrypted messages and files',
             gitLink: 'https://github.com/paul-costa/pgpKey',
-            directLink: 'https://projects.paulcosta.at/pgp',
+            directLink: 'https://pgp-costa.web.app',
             additionInfo: null,
           },
           {
