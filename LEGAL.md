@@ -2,7 +2,7 @@
 #### contacts website & content owner: 
   * name: Paul Costa
   * line of business: employee
-  * employer: <a href="https://www.bawaggroup.com/BAWAGGROUP/group/EN" >BAWAG Group</a> - <a href="https://www.bawagpsk.com/" >BAWAG P.S.K</a>
+  * employer: <a href="https://dataformers.at/" >dataformers.at</a>
   * registered residence: Schrotzbergstraße, 1020 Vienna, Austria
   * business email: <a href="mailto:admin@costapaul.com">admin@costapaul.com</a>
 
@@ -15,7 +15,7 @@ ___
 #### Kontakt Inhaber von Website & Inhalt:
   * Name: Paul Costa
   * Unternehmensgegenstand: Angstellter
-  * Arbeitgeber: <a href="https://www.bawaggroup.com/BAWAGGROUP/group/EN" >BAWAG Group</a> - <a href="https://www.bawagpsk.com/" >BAWAG P.S.K</a>
+  * Arbeitgeber: <a href="https://dataformers.at/" >dataformers.at</a>
   * Eingetragener Wohnsitz: Schrotzbergstraße, 1020 Vienna, Austria
   * Geschäfts-Email: <a href="mailto:admin@costapaul.com">admin@costapaul.com</a>
 
