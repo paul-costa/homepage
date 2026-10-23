@@ -14,7 +14,7 @@ html {
 
   @include mat.menu-overrides((
     container-color: #161618,
-    container-shape: 14px,
+    container-shape: 12px,
     divider-color: rgba(255, 255, 255, 0.06),
     item-label-text-color: #e4e4e7,
     item-label-text-size: 14px,
@@ -27,6 +27,9 @@ html {
   --bg: #0b0b0c;
   --tile: #141416;
   --line: rgba(255, 255, 255, 0.07);
+  --tile-hover: #1f1f23;
+  --radius: 12px; // tiles, cards, menus
+  --radius-child: 6px; // buttons, links and frames inside them
   --text: #f4f4f5;
   --muted: #a1a1aa;
   --faint: #71717a;
@@ -65,7 +68,7 @@ a {
   padding: 18px;
   box-sizing: border-box;
   border: 1px solid color-mix(in srgb, var(--tint) 13%, transparent);
-  border-radius: 20px;
+  border-radius: var(--radius);
   background-color: color-mix(in srgb, var(--tint) 5%, var(--tile));
   transition:
     transform 0.2s ease,
@@ -110,10 +113,10 @@ a {
 
 a.tile:hover,
 a.tile:focus-visible {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--tint) 28%, transparent);
-  background-color: color-mix(in srgb, var(--tint) 7%, var(--tile));
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px) scale(1.02);
+  border-color: color-mix(in srgb, var(--tint) 40%, transparent);
+  background-color: color-mix(in srgb, var(--tint) 12%, var(--tile-hover));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 
   .go {
     color: var(--muted);
@@ -122,7 +125,7 @@ a.tile:focus-visible {
 }
 
 a.tile:active {
-  transform: translateY(0) scale(0.985);
+  transform: translateY(0) scale(0.99);
   box-shadow: none;
   transition-duration: 0.08s;
 }
@@ -136,12 +139,12 @@ a.tile:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px 6px 10px;
+  padding: 9px 16px 9px 12px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius-child);
   background: var(--tile);
   color: var(--muted);
-  font: 400 13px/1 var(--mono);
+  font: 400 14px/1 var(--mono);
   white-space: nowrap;
   cursor: pointer;
   transition:
@@ -159,7 +162,7 @@ a.tile:focus-visible {
   &[aria-expanded='true'] {
     color: var(--text);
     border-color: rgba(255, 255, 255, 0.14);
-    background: #18181b;
+    background: var(--tile-hover);
 
     .mat-icon {
       font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
@@ -185,10 +188,19 @@ a.tile:focus-visible {
     color: var(--faint);
   }
 
-  .note {
+  .note,
+  .user {
     padding: 4px 16px 10px;
     font-size: 13px;
     color: var(--muted);
+  }
+
+  .user {
+    padding-top: 10px;
+    padding-bottom: 2px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--faint);
   }
 
   .mat-mdc-menu-item:hover .material-symbols-outlined {

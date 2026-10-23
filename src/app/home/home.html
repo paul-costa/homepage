@@ -33,9 +33,10 @@
       <div class="llm-head">
         <mat-icon>monitoring</mat-icon>
         <span class="label">LLM activity</span>
-        <a class="open" routerLink="/llm">full view<mat-icon>north_east</mat-icon></a>
+        <a class="open" [href]="url" target="_blank" rel="noopener">costaserver<mat-icon>north_east</mat-icon></a>
       </div>
-      <app-llm-frame [url]="url" compact />
+      <!-- Details fold out inside the monitor's card, as on the costaserver dashboard -->
+      <app-llm-frame [url]="url" />
     </section>
   }
 </section>

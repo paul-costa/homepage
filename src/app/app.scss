@@ -18,13 +18,13 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 28px;
+  padding-bottom: 28px;
 }
 
 .brand {
   flex-shrink: 0;
-  font: 500 15px/1 var(--mono);
+  font: 500 17px/1 var(--mono);
   color: var(--text);
 
   .prompt {
@@ -34,7 +34,7 @@ footer {
 
 @media (max-width: 480px) {
   .brand {
-    font-size: 14px;
+    font-size: 15px;
 
     .tld {
       display: none;

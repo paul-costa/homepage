@@ -3,10 +3,8 @@ import type { User } from 'firebase/auth';
 
 export interface ServerLink {
   label: string;
-  /** external link, opens in a new tab */
-  url?: string;
-  /** route inside this app, e.g. /llm */
-  route?: string;
+  /** opens in a new tab */
+  url: string;
   /** Material Symbols name */
   icon?: string;
 }

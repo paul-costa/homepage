@@ -4,29 +4,18 @@
 </nav>
 
 <div class="account">
-  @if (session.config(); as config) {
-    @for (group of config.groups; track group.title) {
+  @if (session.user()) {
+    @for (group of logoGroups(); track group.title) {
       <button class="icon-btn" type="button" [matMenuTriggerFor]="groupMenu" [matMenuTriggerData]="{ group }" [title]="group.title" [attr.aria-label]="group.title">
-        @if (group.logo) {
-          <img [src]="group.logo" alt="" width="18" height="18">
-        } @else {
-          <mat-icon>{{ group.icon ?? 'menu' }}</mat-icon>
-        }
+        <img [src]="group.logo" alt="" width="20" height="20">
       </button>
     }
-  }
-
-  @if (session.user(); as user) {
-    <button class="icon-btn avatar" type="button" [matMenuTriggerFor]="accountMenu" [title]="user.email" aria-label="Account">
-      @if (user.photoURL) {
-        <img [src]="user.photoURL" alt="" referrerpolicy="no-referrer">
-      } @else {
-        <span>{{ initial() }}</span>
-      }
+    <button class="icon-btn" type="button" [matMenuTriggerFor]="burgerMenu" title="Menu" aria-label="Menu">
+      <mat-icon>menu</mat-icon>
     </button>
   } @else if (session.user() === null) {
     <button class="pill" type="button" (click)="session.signIn()">
-      <img src="logos/google.svg" alt="" width="16" height="16">
+      <img src="logos/google.svg" alt="" width="18" height="18">
       <span>Sign in</span>
     </button>
   }
@@ -36,22 +25,22 @@
   <ng-template matMenuContent let-group="group">
     <div class="heading">{{ group.title }}</div>
     @for (link of group.links; track link.label) {
-      @if (link.route) {
-        <a mat-menu-item [routerLink]="link.route"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
-      } @else {
-        <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
-      }
+      <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
     }
   </ng-template>
 </mat-menu>
 
-<mat-menu #accountMenu="matMenu" xPosition="before" class="header-menu">
-  <div class="note">
-    {{ session.user()?.email }}
-    @if (session.denied()) {
-      <br>has no access to the private links.
+<mat-menu #burgerMenu="matMenu" xPosition="before" class="header-menu">
+  @for (group of burgerGroups(); track group.title) {
+    <div class="heading">{{ group.title }}</div>
+    @for (link of group.links; track link.label) {
+      <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
     }
-  </div>
-  <mat-divider />
-  <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Sign out</span></button>
+    <mat-divider />
+  }
+  @if (session.denied()) {
+    <div class="note">No access to the private links.</div>
+  }
+  <div class="user">{{ userName() }}</div>
+  <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Log out</span></button>
 </mat-menu>

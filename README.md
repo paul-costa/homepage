@@ -22,7 +22,7 @@ The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, w
 
 ## Private menu
 
-The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group becomes one header menu (button: `logo` image or Material `icon`, default a burger); a link has either `url` (new tab) or `route` (inside this app). To change them, edit the git-ignored `private/server.json` and run:
+The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group becomes one header menu (button: `logo` image or Material `icon`, default a burger); its links open in a new tab. `llmMonitorUrl` adds the LLM activity tile to the home page, embedded with `?embed=1` (details fold out inside it, height follows the monitor's `llmMonitorHeight` messages). To change them, edit the git-ignored `private/server.json` and run:
 
 ```bash
 node scripts/set-private-config.mjs private/server.json
@@ -35,7 +35,7 @@ node scripts/set-private-config.mjs private/server.json
     "llmMonitorUrl": "https://host.tailnet.ts.net:8443/",
     "groups": [
       { "title": "Tailscale", "logo": "logos/tailscale.svg", "links": [{ "label": "Cockpit", "url": "https://…", "icon": "speed" }] },
-      { "title": "Links", "icon": "menu", "links": [{ "label": "LLM activity", "route": "/llm", "icon": "monitoring" }] }
+      { "title": "Links", "icon": "menu", "links": [{ "label": "GitHub runner", "url": "https://github.com/…", "icon": "rocket_launch" }] }
     ]
   }
 }

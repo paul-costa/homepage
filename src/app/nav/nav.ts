@@ -2,17 +2,25 @@ import { Component, computed, inject } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
-import { RouterLink } from '@angular/router';
 import { Session } from '../session';
 
-/** Header: infrastructure maps, sign-in, and after sign-in one menu per private link group */
+/**
+ * Header: infrastructure maps and sign-in. After sign-in, every link group with a logo (Tailscale)
+ * gets its own menu; the other groups and the account (name, log out) share the burger menu.
+ */
 @Component({
   selector: 'app-nav',
-  imports: [MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger, MatIcon, MatDivider, RouterLink],
+  imports: [MatMenu, MatMenuContent, MatMenuItem, MatMenuTrigger, MatIcon, MatDivider],
   templateUrl: './nav.html',
   styleUrl: './nav.scss',
 })
 export class Nav {
   protected readonly session = inject(Session);
-  protected readonly initial = computed(() => (this.session.user()?.email ?? '?').charAt(0).toUpperCase());
+
+  protected readonly logoGroups = computed(() => this.session.config()?.groups.filter((group) => group.logo) ?? []);
+  protected readonly burgerGroups = computed(() => this.session.config()?.groups.filter((group) => !group.logo) ?? []);
+  protected readonly userName = computed(() => {
+    const user = this.session.user();
+    return user?.displayName || user?.email || '';
+  });
 }

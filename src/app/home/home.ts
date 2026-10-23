@@ -1,14 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { MatRipple } from '@angular/material/core';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { CONTACT_EMAIL, LINKS } from '../links';
 import { LlmFrame } from '../llm/llm-frame';
 import { Session } from '../session';
 
 @Component({
   selector: 'app-home',
-  imports: [MatIcon, MatRipple, RouterLink, LlmFrame],
+  imports: [MatIcon, MatRipple, LlmFrame],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
