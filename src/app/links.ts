@@ -26,17 +26,18 @@ export const LINKS: LinkTile[] = [
   },
   {
     label: 'App Store',
-    detail: 'Coming soon',
+    detail: 'coming soon',
     logo: 'logos/app-store.svg',
     tint: '#e0703f',
     href: null,
   },
   {
     label: 'Google Play',
-    detail: 'Developer page',
+    detail: 'coming soon',
     logo: 'logos/google-play.svg',
     tint: '#2bb58a',
-    href: 'https://play.google.com/store/apps/developer?id=Paul+C.',
+    // Developer page (id=Paul+C.) answers 404 until the app leaves closed testing
+    href: null,
   },
 ];
 
