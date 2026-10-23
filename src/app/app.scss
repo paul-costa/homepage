@@ -49,6 +49,14 @@ main {
   justify-content: center;
 }
 
+// Phones: start below the header instead of centring the cards in a tall viewport
+@media (max-width: 599px) {
+  main {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+}
+
 footer {
   display: flex;
   justify-content: space-between;

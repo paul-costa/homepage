@@ -1,6 +1,6 @@
 # homepage
 
-Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public infrastructure maps (server, homeassistant); after Google sign-in a burger menu holds the private link groups (Tailscale, Links) and log out, and the home page shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
+Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public server flow and homeassistant flow; after Google sign-in a burger menu holds the private link groups (Tailscale, Links) and log out, and the home page shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
 
 Angular 22 with Angular Material (Material Symbols, Roboto), Firebase Hosting, Auth and Firestore (project `projects-costa`).
 
@@ -18,7 +18,7 @@ npm run build        # dist/homepage/browser
 firebase deploy --only hosting,firestore:rules
 ```
 
-The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, which copies `/infrastructure/` and `/infrastructure/homeassistant/` from the live site into the build. Those two maps are built and published from the private costaserver repo (`scripts/hosting/`); a deploy here keeps them as they are.
+The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, which copies `/infrastructure/` and `/infrastructure/homeassistant/` from the live site into the build. Those two flows are built and published from the private costaserver repo (`scripts/hosting/`); a deploy here keeps them as they are.
 
 ## Private menu
 

@@ -1,4 +1,4 @@
-// Copies the public infrastructure maps from the live site into the build, so deploying this app
+// Copies the public server flow and homeassistant flow from the live site into the build, so deploying this app
 // keeps them online. They are built and published from the costaserver repo (scripts/hosting/),
 // which swaps single files into the live release; this script never changes them.
 // Runs as a Firebase predeploy step after `npm run build`.
