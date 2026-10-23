@@ -142,6 +142,7 @@ a.tile:focus-visible {
   background: var(--tile);
   color: var(--muted);
   font: 400 13px/1 var(--mono);
+  white-space: nowrap;
   cursor: pointer;
   transition:
     color 0.2s ease,
@@ -172,7 +173,7 @@ a.tile:focus-visible {
 }
 
 // The menu panel lives in the CDK overlay, outside every component
-.infra-menu.mat-mdc-menu-panel {
+.header-menu.mat-mdc-menu-panel {
   min-width: 240px;
   border: 1px solid var(--line);
 

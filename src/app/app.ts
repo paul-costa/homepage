@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ServerMenu } from './server-menu/server-menu';
+import { Nav } from './nav/nav';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, ServerMenu],
+  imports: [RouterOutlet, RouterLink, Nav],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

@@ -1,0 +1,57 @@
+<nav class="infra" aria-label="Infrastructure">
+  <a class="link" href="/infrastructure/" title="Server map" aria-label="Server map"><mat-icon>hub</mat-icon><span>Server</span></a>
+  <a class="link" href="/infrastructure/homeassistant/" title="Smart home map" aria-label="Smart home map"><mat-icon>home</mat-icon><span>Smart home</span></a>
+</nav>
+
+<div class="account">
+  @if (session.config(); as config) {
+    @for (group of config.groups; track group.title) {
+      <button class="icon-btn" type="button" [matMenuTriggerFor]="groupMenu" [matMenuTriggerData]="{ group }" [title]="group.title" [attr.aria-label]="group.title">
+        @if (group.logo) {
+          <img [src]="group.logo" alt="" width="18" height="18">
+        } @else {
+          <mat-icon>{{ group.icon ?? 'menu' }}</mat-icon>
+        }
+      </button>
+    }
+  }
+
+  @if (session.user(); as user) {
+    <button class="icon-btn avatar" type="button" [matMenuTriggerFor]="accountMenu" [title]="user.email" aria-label="Account">
+      @if (user.photoURL) {
+        <img [src]="user.photoURL" alt="" referrerpolicy="no-referrer">
+      } @else {
+        <span>{{ initial() }}</span>
+      }
+    </button>
+  } @else if (session.user() === null) {
+    <button class="pill" type="button" (click)="session.signIn()">
+      <img src="logos/google.svg" alt="" width="16" height="16">
+      <span>Sign in</span>
+    </button>
+  }
+</div>
+
+<mat-menu #groupMenu="matMenu" xPosition="before" class="header-menu">
+  <ng-template matMenuContent let-group="group">
+    <div class="heading">{{ group.title }}</div>
+    @for (link of group.links; track link.label) {
+      @if (link.route) {
+        <a mat-menu-item [routerLink]="link.route"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
+      } @else {
+        <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
+      }
+    }
+  </ng-template>
+</mat-menu>
+
+<mat-menu #accountMenu="matMenu" xPosition="before" class="header-menu">
+  <div class="note">
+    {{ session.user()?.email }}
+    @if (session.denied()) {
+      <br>has no access to the private links.
+    }
+  </div>
+  <mat-divider />
+  <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Sign out</span></button>
+</mat-menu>

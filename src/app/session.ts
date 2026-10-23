@@ -3,13 +3,22 @@ import type { User } from 'firebase/auth';
 
 export interface ServerLink {
   label: string;
-  url: string;
+  /** external link, opens in a new tab */
+  url?: string;
+  /** route inside this app, e.g. /llm */
+  route?: string;
+  /** Material Symbols name */
   icon?: string;
 }
 
+/** One header menu after sign-in */
 export interface ServerGroup {
   title: string;
   links: ServerLink[];
+  /** image in public/, e.g. logos/tailscale.svg; wins over icon */
+  logo?: string;
+  /** Material Symbols name for the menu button, default "menu" */
+  icon?: string;
 }
 
 /** Firestore document private/server, readable only by admins */

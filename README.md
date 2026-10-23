@@ -1,6 +1,6 @@
 # homepage
 
-Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact, plus an "Infra" menu with the public infrastructure maps and, after Google sign-in, the private server links and the LLM activity on costaserver.
+Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public infrastructure maps (server, smart home); after Google sign-in it adds one menu per private link group (Tailscale, Links) and the LLM activity on costaserver.
 
 Angular 22 with Angular Material (Material Symbols, Roboto), Firebase Hosting, Auth and Firestore (project `projects-costa`).
 
@@ -22,7 +22,7 @@ The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, w
 
 ## Private menu
 
-The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. To change them, edit the git-ignored `private/server.json` and run:
+The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group becomes one header menu (button: `logo` image or Material `icon`, default a burger); a link has either `url` (new tab) or `route` (inside this app). To change them, edit the git-ignored `private/server.json` and run:
 
 ```bash
 node scripts/set-private-config.mjs private/server.json
@@ -33,7 +33,10 @@ node scripts/set-private-config.mjs private/server.json
   "admins": ["you@example.com"],
   "server": {
     "llmMonitorUrl": "https://host.tailnet.ts.net:8443/",
-    "groups": [{ "title": "Remote", "links": [{ "label": "Cockpit", "url": "https://…", "icon": "speed" }] }]
+    "groups": [
+      { "title": "Tailscale", "logo": "logos/tailscale.svg", "links": [{ "label": "Cockpit", "url": "https://…", "icon": "speed" }] },
+      { "title": "Links", "icon": "menu", "links": [{ "label": "LLM activity", "route": "/llm", "icon": "monitoring" }] }
+    ]
   }
 }
 ```
@@ -42,4 +45,4 @@ node scripts/set-private-config.mjs private/server.json
 
 ## Logos
 
-The brand logos in `public/logos/` come from the CC0 [logos](https://github.com/gilbarbara/logos) set; the GitHub mark is recolored white for the dark background.
+The brand logos in `public/logos/` come from the CC0 [logos](https://github.com/gilbarbara/logos) set; the GitHub mark is recolored white for the dark background. `tailscale.svg` redraws Tailscale's dot logo (light, for dark backgrounds). The favicon and touch icons are the paul-costa GitHub avatar.
