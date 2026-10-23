@@ -1,6 +1,6 @@
 # homepage
 
-Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public infrastructure map; after Google sign-in it adds the smart home map, one menu per private link group (Tailscale; the rest in the burger menu with log out) and the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
+Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public infrastructure map; after Google sign-in a burger menu holds the smart home map, the private link groups (Tailscale, Links) and log out, and the home page shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
 
 Angular 22 with Angular Material (Material Symbols, Roboto), Firebase Hosting, Auth and Firestore (project `projects-costa`).
 
@@ -22,7 +22,7 @@ The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, w
 
 ## Private menu
 
-The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group becomes one header menu (button: `logo` image or Material `icon`, default a burger); its links open in a new tab. `llmMonitorUrl` adds the LLM activity tile to the home page, embedded with `?embed=1` (details fold out inside it, height follows the monitor's `llmMonitorHeight` messages). To change them, edit the git-ignored `private/server.json` and run:
+The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group is one section of the burger menu (a `logo` image shows next to its title); its links open in a new tab. `llmMonitorUrl` adds the LLM activity tile to the home page, embedded with `?embed=1` (details fold out inside it, height follows the monitor's `llmMonitorHeight` messages). To change them, edit the git-ignored `private/server.json` and run:
 
 ```bash
 node scripts/set-private-config.mjs private/server.json

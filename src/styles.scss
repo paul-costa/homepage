@@ -181,6 +181,9 @@ a.tile:focus-visible {
   border: 1px solid var(--line);
 
   .heading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     padding: 10px 16px 4px;
     font: 500 11px/1.4 var(--mono);
     letter-spacing: 0.06em;

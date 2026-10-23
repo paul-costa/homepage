@@ -1,15 +1,9 @@
 <nav class="infra" aria-label="Infrastructure">
-  <a class="link" href="/infrastructure/" title="Infrastructure" aria-label="Infrastructure"><mat-icon>hub</mat-icon><span>Infrastructure</span></a>
+  <a class="link" href="/infrastructure/" title="infrastructure" aria-label="Infrastructure"><mat-icon>hub</mat-icon><span>infrastructure</span></a>
 </nav>
 
 <div class="account">
   @if (session.user()) {
-    <a class="icon-btn" href="/infrastructure/homeassistant/" title="Smart home" aria-label="Smart home"><mat-icon>home</mat-icon></a>
-    @for (group of logoGroups(); track group.title) {
-      <button class="icon-btn" type="button" [matMenuTriggerFor]="groupMenu" [matMenuTriggerData]="{ group }" [title]="group.title" [attr.aria-label]="group.title">
-        <img [src]="group.logo" alt="" width="20" height="20">
-      </button>
-    }
     <button class="icon-btn" type="button" [matMenuTriggerFor]="burgerMenu" title="Menu" aria-label="Menu">
       <mat-icon>menu</mat-icon>
     </button>
@@ -21,18 +15,16 @@
   }
 </div>
 
-<mat-menu #groupMenu="matMenu" xPosition="before" class="header-menu">
-  <ng-template matMenuContent let-group="group">
-    <div class="heading">{{ group.title }}</div>
-    @for (link of group.links; track link.label) {
-      <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
-    }
-  </ng-template>
-</mat-menu>
-
 <mat-menu #burgerMenu="matMenu" xPosition="before" class="header-menu">
-  @for (group of burgerGroups(); track group.title) {
-    <div class="heading">{{ group.title }}</div>
+  <a mat-menu-item href="/infrastructure/homeassistant/"><mat-icon>home</mat-icon><span>Smart home</span></a>
+  <mat-divider />
+  @for (group of session.config()?.groups ?? []; track group.title) {
+    <div class="heading">
+      @if (group.logo) {
+        <img [src]="group.logo" alt="" width="12" height="12">
+      }
+      {{ group.title }}
+    </div>
     @for (link of group.links; track link.label) {
       <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
     }
