@@ -1,59 +1,45 @@
-# Homepage
+# homepage
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.4.
+Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact, plus an "Infra" menu with the public infrastructure maps and, after Google sign-in, the private server links and the LLM activity on costaserver.
 
-## Development server
+Angular 22 with Angular Material (Material Symbols, Roboto), Firebase Hosting, Auth and Firestore (project `projects-costa`).
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Develop
 
 ```bash
-ng generate component component-name
+npm install
+npm start            # http://localhost:4200
+npm run build        # dist/homepage/browser
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Deploy
 
 ```bash
-ng generate --help
+firebase deploy --only hosting,firestore:rules
 ```
 
-## Building
+The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, which copies `/infrastructure/` and `/infrastructure/homeassistant/` from the live site into the build. Those two maps are built and published from the private costaserver repo (`scripts/hosting/`); a deploy here keeps them as they are.
 
-To build the project run:
+## Private menu
+
+The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. To change them, edit the git-ignored `private/server.json` and run:
 
 ```bash
-ng build
+node scripts/set-private-config.mjs private/server.json
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```json
+{
+  "admins": ["you@example.com"],
+  "server": {
+    "llmMonitorUrl": "https://host.tailnet.ts.net:8443/",
+    "groups": [{ "title": "Remote", "links": [{ "label": "Cockpit", "url": "https://…", "icon": "speed" }] }]
+  }
+}
 ```
 
-## Running end-to-end tests
+`icon` is a Material Symbols name. `src/index.html` loads only the icons the app uses (`icon_names=`, alphabetical); add new names there.
 
-For end-to-end (e2e) testing, run:
+## Logos
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The brand logos in `public/logos/` come from the CC0 [logos](https://github.com/gilbarbara/logos) set; the GitHub mark is recolored white for the dark background.

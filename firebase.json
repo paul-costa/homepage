@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "site": "projects-costa",
+    "public": "dist/homepage/browser",
+    "ignore": ["firebase.json", "**/.*"],
+    "predeploy": ["npm run build", "node scripts/fetch-infrastructure.mjs"],
+    "rewrites": [{ "source": "**", "destination": "/index.html" }],
+    "redirects": [{ "source": "/infrastruktur{,/**}", "destination": "/infrastructure/", "type": 301 }],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      },
+      {
+        "source": "/infrastructure/**",
+        "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}

@@ -1,0 +1,38 @@
+<button class="pill" type="button" [matMenuTriggerFor]="menu" aria-label="Infrastructure menu">
+  <mat-icon>dns</mat-icon>
+  <span>Infra</span>
+</button>
+
+<mat-menu #menu="matMenu" xPosition="before" class="infra-menu">
+  <div class="heading">Infrastructure</div>
+  <a mat-menu-item href="/infrastructure/"><mat-icon>hub</mat-icon><span>Server map</span></a>
+  <a mat-menu-item href="/infrastructure/homeassistant/"><mat-icon>home</mat-icon><span>Smart home map</span></a>
+
+  <mat-divider />
+
+  @if (session.config(); as config) {
+    @for (group of config.groups; track group.title) {
+      <div class="heading">{{ group.title }}</div>
+      @for (link of group.links; track link.url) {
+        <a mat-menu-item [href]="link.url" target="_blank" rel="noopener">
+          <mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span>
+        </a>
+      }
+    }
+    @if (config.llmMonitorUrl) {
+      <a mat-menu-item routerLink="/llm"><mat-icon>monitoring</mat-icon><span>LLM activity</span></a>
+    }
+    <mat-divider />
+    <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Sign out</span></button>
+  } @else if (session.denied()) {
+    <div class="heading">Private</div>
+    <div class="note">{{ session.user()?.email }} has no access.</div>
+    <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Sign out</span></button>
+  } @else if (session.user() === null) {
+    <div class="heading">Private</div>
+    <button mat-menu-item type="button" (click)="session.signIn()"><mat-icon>login</mat-icon><span>Sign in with Google</span></button>
+  } @else {
+    <div class="heading">Private</div>
+    <div class="note">Checking access…</div>
+  }
+</mat-menu>

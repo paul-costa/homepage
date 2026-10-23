@@ -1,0 +1,41 @@
+<section class="grid">
+  <article class="tile hero">
+    <span class="cmd">$ whoami</span>
+    <h1>Paul Costa<span class="cursor" aria-hidden="true"></span></h1>
+    <p>Developer · Vienna</p>
+  </article>
+
+  @for (link of links; track link.label) {
+    @if (link.href) {
+      <a class="tile" matRipple [matRippleColor]="ripple" [href]="link.href" target="_blank" rel="noopener" [style.--tint]="link.tint">
+        <img class="logo" [src]="link.logo" alt="" width="28" height="28">
+        <span class="label">{{ link.label }}</span>
+        <span class="detail">{{ link.detail }}</span>
+        <mat-icon class="go">north_east</mat-icon>
+      </a>
+    } @else {
+      <div class="tile soon" [style.--tint]="link.tint">
+        <img class="logo" [src]="link.logo" alt="" width="28" height="28">
+        <span class="label">{{ link.label }}</span>
+        <span class="detail">{{ link.detail }}</span>
+      </div>
+    }
+  }
+
+  <a class="tile wide" matRipple [matRippleColor]="ripple" [href]="'mailto:' + email" style="--tint: #e0699a">
+    <mat-icon>mail</mat-icon>
+    <span class="label">{{ email }}</span>
+    <mat-icon class="go">north_east</mat-icon>
+  </a>
+
+  @if (session.config()?.llmMonitorUrl; as url) {
+    <section class="tile wide llm" style="--tint: #4ade80">
+      <div class="llm-head">
+        <mat-icon>monitoring</mat-icon>
+        <span class="label">LLM activity</span>
+        <a class="open" routerLink="/llm">full view<mat-icon>north_east</mat-icon></a>
+      </div>
+      <app-llm-frame [url]="url" compact />
+    </section>
+  }
+</section>
