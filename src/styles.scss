@@ -135,46 +135,6 @@ a.tile:focus-visible {
   outline-offset: 2px;
 }
 
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 16px 9px 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-child);
-  background: var(--tile);
-  color: var(--muted);
-  font: 400 14px/1 var(--mono);
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-
-  .mat-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-  }
-
-  &:hover,
-  &[aria-expanded='true'] {
-    color: var(--text);
-    border-color: rgba(255, 255, 255, 0.14);
-    background: var(--tile-hover);
-
-    .mat-icon {
-      font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-    }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--green);
-    outline-offset: 2px;
-  }
-}
-
 // The menu panel lives in the CDK overlay, outside every component
 .header-menu.mat-mdc-menu-panel {
   min-width: 240px;
@@ -208,6 +168,13 @@ a.tile:focus-visible {
 
   .mat-mdc-menu-item:hover .material-symbols-outlined {
     font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+
+  // the Google logo on "Sign in" takes the slot of a menu item's mat-icon
+  .mat-mdc-menu-item .google {
+    width: 18px;
+    height: 18px;
+    margin: 0 19px 0 3px;
   }
 }
 

@@ -8,31 +8,33 @@
 </nav>
 
 <div class="account">
-  @if (session.user()) {
-    <button class="icon-btn" type="button" [matMenuTriggerFor]="burgerMenu" title="Menu" aria-label="Menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-  } @else if (session.user() === null) {
-    <button class="pill" type="button" (click)="session.signIn()">
-      <img src="logos/google.svg" alt="" width="18" height="18">
-      <span>Sign in</span>
-    </button>
-  }
+  <button class="icon-btn" type="button" [matMenuTriggerFor]="burgerMenu" title="Menu" aria-label="Menu">
+    <mat-icon>menu</mat-icon>
+  </button>
 </div>
 
 <mat-menu #burgerMenu="matMenu" xPosition="before" class="header-menu">
-  @for (group of session.config()?.groups ?? []; track group.title) {
-    <div class="heading">
-      @if (group.logo) {
-        <img [src]="group.logo" alt="" width="12" height="12">
-      }
-      {{ group.title }}
-    </div>
-    @for (link of group.links; track link.label) {
-      <a mat-menu-item [href]="link.url" [attr.target]="link.url.startsWith('/') ? null : '_blank'" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
-    }
-    <mat-divider />
+  <div class="heading">Projekte</div>
+  @for (project of projects; track project.label) {
+    <a mat-menu-item [href]="project.url" target="_blank" rel="noopener"><mat-icon>{{ project.icon }}</mat-icon><span>{{ project.label }}</span></a>
   }
-  <div class="user">{{ userName() }}</div>
-  <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Log out</span></button>
+  <mat-divider />
+  @if (session.user()) {
+    @for (group of session.config()?.groups ?? []; track group.title) {
+      <div class="heading">
+        @if (group.logo) {
+          <img [src]="group.logo" alt="" width="12" height="12">
+        }
+        {{ group.title }}
+      </div>
+      @for (link of group.links; track link.label) {
+        <a mat-menu-item [href]="link.url" [attr.target]="link.url.startsWith('/') ? null : '_blank'" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
+      }
+      <mat-divider />
+    }
+    <div class="user">{{ userName() }}</div>
+    <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Log out</span></button>
+  } @else if (session.user() === null) {
+    <button mat-menu-item type="button" (click)="session.signIn()"><img class="google" src="logos/google.svg" alt="" width="18" height="18"><span>Sign in</span></button>
+  }
 </mat-menu>

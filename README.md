@@ -1,6 +1,6 @@
 # homepage
 
-Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public server flow and homeassistant flow; after Google sign-in a burger menu holds the private link groups (Tailscale, Links) and log out, and the home page shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
+Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public server flow and homeassistant flow; its burger menu lists the public projects (wedding.costa at [wedding.costapaul.com](https://wedding.costapaul.com), see `src/app/links.ts`) and the Google sign-in, and after sign-in the private link groups (Tailscale, Links) and log out; the home page then shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
 
 Angular 22 with Angular Material (Material Symbols, Roboto), Firebase Hosting, Auth and Firestore (project `projects-costa`).
 

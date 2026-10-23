@@ -45,3 +45,13 @@ export const LINKS: LinkTile[] = [
 ];
 
 export const CONTACT_EMAIL = 'admin@costapaul.com';
+
+export interface ProjectLink {
+  label: string;
+  url: string;
+  /** Material Symbols name */
+  icon: string;
+}
+
+/** Public projects in the burger menu, shown with and without sign-in */
+export const PROJECTS: ProjectLink[] = [{ label: 'wedding.costa', url: 'https://wedding.costapaul.com', icon: 'favorite' }];

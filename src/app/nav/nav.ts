@@ -2,11 +2,13 @@ import { Component, computed, inject } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { PROJECTS } from '../links';
 import { Session } from '../session';
 
 /**
- * Header: the server flow and homeassistant flow links and sign-in. After sign-in, one burger menu
- * holds every private link group (Tailscale, Links) and the account (name, log out).
+ * Header: the server flow and homeassistant flow links and the burger menu. The menu always lists
+ * the public projects (wedding.costa) and, below them, "Sign in" or, after sign-in, every private link
+ * group (Tailscale, Links) and the account (name, log out).
  */
 @Component({
   selector: 'app-nav',
@@ -16,6 +18,7 @@ import { Session } from '../session';
 })
 export class Nav {
   protected readonly session = inject(Session);
+  protected readonly projects = PROJECTS;
 
   protected readonly userName = computed(() => {
     const user = this.session.user();
