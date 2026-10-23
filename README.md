@@ -1,6 +1,6 @@
 # homepage
 
-Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public infrastructure map; after Google sign-in a burger menu holds the smart home map, the private link groups (Tailscale, Links) and log out, and the home page shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
+Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public infrastructure maps (server, homeassistant); after Google sign-in a burger menu holds the private link groups (Tailscale, Links) and log out, and the home page shows the LLM activity on costaserver. Only Paul's account can sign in: sign-up is disabled in Firebase Auth (`client.permissions.disabledUserSignup`).
 
 Angular 22 with Angular Material (Material Symbols, Roboto), Firebase Hosting, Auth and Firestore (project `projects-costa`).
 

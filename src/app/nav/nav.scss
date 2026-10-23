@@ -90,6 +90,13 @@
   }
 }
 
+// Short labels ("server", "homeassistant") below 1024px, icons only on phones
+@media (max-width: 1023px) {
+  .suffix {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   :host {
     margin-left: 8px;
