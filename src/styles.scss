@@ -138,6 +138,7 @@ a.tile:focus-visible {
 // The menu panel lives in the CDK overlay, outside every component
 .header-menu.mat-mdc-menu-panel {
   min-width: 240px;
+  margin-top: 8px; // gap below the burger button
   border: 1px solid var(--line);
 
   .heading {
@@ -170,8 +171,9 @@ a.tile:focus-visible {
     font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'opsz' 24;
   }
 
-  // the Google logo on "Sign in" takes the slot of a menu item's mat-icon
+  // the Google logo on "Sign in" sits in the menu item's icon slot (matMenuItemIcon), 24px wide like a mat-icon
   .mat-mdc-menu-item .google {
+    flex-shrink: 0;
     width: 18px;
     height: 18px;
     margin: 0 19px 0 3px;

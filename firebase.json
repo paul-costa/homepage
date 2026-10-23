@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "projects-costa",
+    "site": "costapaul",
     "public": "dist/homepage/browser",
     "ignore": ["firebase.json", "**/.*"],
     "predeploy": ["npm run build", "node scripts/fetch-infrastructure.mjs"],

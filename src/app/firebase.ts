@@ -4,14 +4,15 @@ import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signO
 import { doc, getDoc, getFirestore } from 'firebase/firestore/lite';
 import type { ServerConfig } from './session';
 
-// Web config of the app "homepage" in project projects-costa; these values are public by design
+// Web config of the app "homepage" in project costapaul; these values are public by design (the API
+// key only answers costapaul.com, costapaul.web.app, costapaul.firebaseapp.com and localhost:4200)
 const app = initializeApp({
-  apiKey: 'AIzaSyDiXhmiw4p_dspfZwc9_4xb4C4CKcHSyY8',
-  authDomain: 'projects-costa.firebaseapp.com',
-  projectId: 'projects-costa',
-  storageBucket: 'projects-costa.firebasestorage.app',
-  messagingSenderId: '144755815187',
-  appId: '1:144755815187:web:a94858130ffc4e47bee0e6',
+  apiKey: 'AIzaSyC21DN-kghtgU7qjmkkDHe4YZbktSUffbM',
+  authDomain: 'costapaul.firebaseapp.com',
+  projectId: 'costapaul',
+  storageBucket: 'costapaul.firebasestorage.app',
+  messagingSenderId: '1008880690600',
+  appId: '1:1008880690600:web:c0a87da93ccac603e8699d',
 });
 
 const auth = getAuth(app);

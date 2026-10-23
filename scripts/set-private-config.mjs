@@ -6,7 +6,7 @@ import { execSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 
-const PROJECT = 'projects-costa';
+const PROJECT = JSON.parse(readFileSync(new URL('../.firebaserc', import.meta.url), 'utf8')).projects.default;
 const file = process.argv[2];
 if (!file) throw new Error('usage: node scripts/set-private-config.mjs <server.json>');
 const { admins, server } = JSON.parse(readFileSync(file, 'utf8'));
