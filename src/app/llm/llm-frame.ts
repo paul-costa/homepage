@@ -6,6 +6,10 @@ import { DomSanitizer } from '@angular/platform-browser';
  * from devices in the tailnet. Contract: ?embed=1 is the compact card on a transparent background
  * with the details folding out inside it; the page posts {llmMonitorHeight} to its parent whenever
  * its content changes size.
+ *
+ * From https://costapaul.com, Chrome loads the tailnet address only after the visitor allowed
+ * local network access for the site, and only eagerly: with loading="lazy" (Chrome 155) the iframe
+ * stayed on about:blank. "local-network" is the newer name of "local-network-access"; both are set.
  */
 @Component({
   selector: 'app-llm-frame',
@@ -14,8 +18,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     [src]="src()"
     [style.height.px]="height() || 480"
     title="LLM activity on costaserver"
-    allow="local-network-access"
-    loading="lazy"
+    allow="local-network; local-network-access"
   ></iframe>`,
   styles: `
     :host { display: block; }
