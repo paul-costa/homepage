@@ -16,8 +16,6 @@
 </div>
 
 <mat-menu #burgerMenu="matMenu" xPosition="before" class="header-menu">
-  <a mat-menu-item href="/infrastructure/homeassistant/"><mat-icon>home</mat-icon><span>Smart home</span></a>
-  <mat-divider />
   @for (group of session.config()?.groups ?? []; track group.title) {
     <div class="heading">
       @if (group.logo) {
@@ -26,7 +24,7 @@
       {{ group.title }}
     </div>
     @for (link of group.links; track link.label) {
-      <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
+      <a mat-menu-item [href]="link.url" [attr.target]="link.url.startsWith('/') ? null : '_blank'" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
     }
     <mat-divider />
   }

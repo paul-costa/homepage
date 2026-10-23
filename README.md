@@ -22,7 +22,7 @@ The predeploy step builds the app and runs `scripts/fetch-infrastructure.mjs`, w
 
 ## Private menu
 
-The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group is one section of the burger menu (a `logo` image shows next to its title); its links open in a new tab. `llmMonitorUrl` adds the LLM activity tile to the home page, embedded with `?embed=1` (details fold out inside it, height follows the monitor's `llmMonitorHeight` messages). To change them, edit the git-ignored `private/server.json` and run:
+The links that need Tailscale and the LLM monitor URL are not in this repo. They live in the Firestore document `private/server`, which `firestore.rules` lets only accounts listed in `admins/{email}` read. Each group is one section of the burger menu (a `logo` image shows next to its title); absolute links open in a new tab, paths on this site in the same one. `llmMonitorUrl` adds the LLM activity tile to the home page, embedded with `?embed=1` (details fold out inside it, height follows the monitor's `llmMonitorHeight` messages). To change them, edit the git-ignored `private/server.json` and run:
 
 ```bash
 node scripts/set-private-config.mjs private/server.json

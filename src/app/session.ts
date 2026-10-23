@@ -3,7 +3,7 @@ import type { User } from 'firebase/auth';
 
 export interface ServerLink {
   label: string;
-  /** opens in a new tab */
+  /** absolute URLs open in a new tab, paths on this site (e.g. /infrastructure/homeassistant/) in the same one */
   url: string;
   /** Material Symbols name */
   icon?: string;

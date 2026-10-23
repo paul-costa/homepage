@@ -29,6 +29,8 @@ export const LINKS: LinkTile[] = [
     detail: 'coming soon',
     logo: 'logos/app-store.svg',
     tint: '#e0703f',
+    // Once dosed is released: https://apps.apple.com/app/id6818039868 (the developer page needs the
+    // artist ID, which only appears on the public listing)
     href: null,
   },
   {
@@ -36,7 +38,8 @@ export const LINKS: LinkTile[] = [
     detail: 'coming soon',
     logo: 'logos/google-play.svg',
     tint: '#2bb58a',
-    // Developer page (id=Paul+C.) answers 404 until the app leaves closed testing
+    // dosed is in closed testing ("Alpha"), the developer page answers 404 until the first production
+    // release: then https://play.google.com/store/apps/dev?id=5655845316536750169
     href: null,
   },
 ];
