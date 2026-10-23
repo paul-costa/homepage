@@ -30,21 +30,21 @@ export class Session {
   /** undefined while Firebase has not answered yet */
   readonly user = signal<User | null | undefined>(undefined);
   readonly config = signal<ServerConfig | null>(null);
-  readonly denied = signal(false);
 
   private readonly firebase = import('./firebase');
 
   constructor() {
-    this.firebase.then(({ watchUser, loadServerConfig }) =>
+    // Sign-up is disabled in Firebase Auth, so only the existing admin account can sign in at all;
+    // any account the Firestore rules still reject is signed out right away
+    this.firebase.then(({ watchUser, loadServerConfig, signOutUser }) =>
       watchUser(async (user) => {
         this.config.set(null);
-        this.denied.set(false);
         this.user.set(user);
         if (!user) return;
         try {
           this.config.set(await loadServerConfig());
-        } catch {
-          this.denied.set(true);
+        } catch (error) {
+          if ((error as { code?: string }).code === 'permission-denied') await signOutUser();
         }
       }),
     );

@@ -1,10 +1,10 @@
 <nav class="infra" aria-label="Infrastructure">
-  <a class="link" href="/infrastructure/" title="Server map" aria-label="Server map"><mat-icon>hub</mat-icon><span>Server</span></a>
-  <a class="link" href="/infrastructure/homeassistant/" title="Smart home map" aria-label="Smart home map"><mat-icon>home</mat-icon><span>Smart home</span></a>
+  <a class="link" href="/infrastructure/" title="Infrastructure" aria-label="Infrastructure"><mat-icon>hub</mat-icon><span>Infrastructure</span></a>
 </nav>
 
 <div class="account">
   @if (session.user()) {
+    <a class="icon-btn" href="/infrastructure/homeassistant/" title="Smart home" aria-label="Smart home"><mat-icon>home</mat-icon></a>
     @for (group of logoGroups(); track group.title) {
       <button class="icon-btn" type="button" [matMenuTriggerFor]="groupMenu" [matMenuTriggerData]="{ group }" [title]="group.title" [attr.aria-label]="group.title">
         <img [src]="group.logo" alt="" width="20" height="20">
@@ -37,9 +37,6 @@
       <a mat-menu-item [href]="link.url" target="_blank" rel="noopener"><mat-icon>{{ link.icon ?? 'open_in_new' }}</mat-icon><span>{{ link.label }}</span></a>
     }
     <mat-divider />
-  }
-  @if (session.denied()) {
-    <div class="note">No access to the private links.</div>
   }
   <div class="user">{{ userName() }}</div>
   <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Log out</span></button>

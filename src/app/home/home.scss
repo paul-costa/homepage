@@ -1,7 +1,8 @@
 .grid {
+  --gap: 12px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: var(--gap);
 }
 
 .hero {
@@ -81,7 +82,9 @@
   cursor: default;
 }
 
+// Double gap before the LLM card, it is not one of the links
 .llm {
+  margin-top: var(--gap);
   flex-direction: column;
   align-items: stretch;
 
@@ -120,21 +123,22 @@
   }
 }
 
-// Below 1024px: one column, the link tiles become rows (logo, name, detail, arrow)
+// Below 1024px the link tiles become rows (logo, name, detail, arrow) beside the half-width name
+// card; below 600px everything stacks in one column
 @media (max-width: 1023px) {
   .grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 10px;
+    --gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero {
-    grid-column: auto;
-    grid-row: auto;
-    min-height: 180px;
+    grid-column: 1;
+    grid-row: span 4;
+    min-height: 0;
   }
 
   .wide {
-    grid-column: auto;
+    grid-column: span 2;
   }
 
   .tile:not(.hero, .wide) {
@@ -146,10 +150,20 @@
 
     .label {
       margin-top: 0;
+      white-space: nowrap;
     }
 
     .detail {
+      min-width: 0;
       margin-left: auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .logo,
+    .go {
+      flex-shrink: 0;
     }
 
     .go {
@@ -160,5 +174,20 @@
   // no arrow: keep the detail in line with the rows that have one
   .soon .detail {
     margin-right: 30px;
+  }
+}
+
+@media (max-width: 599px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero {
+    grid-row: auto;
+    min-height: 180px;
+  }
+
+  .wide {
+    grid-column: auto;
   }
 }
