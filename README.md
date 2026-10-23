@@ -35,7 +35,7 @@ node scripts/set-private-config.mjs private/server.json
     "llmMonitorUrl": "https://host.tailnet.ts.net:8443/",
     "groups": [
       { "title": "Tailscale", "logo": "logos/tailscale.svg", "links": [{ "label": "Cockpit", "url": "https://…", "icon": "speed" }] },
-      { "title": "Links", "icon": "menu", "links": [{ "label": "GitHub runner", "url": "https://github.com/…", "icon": "rocket_launch" }] }
+      { "title": "Links", "links": [{ "label": "GitHub runner", "url": "https://github.com/…", "icon": "rocket_launch" }] }
     ]
   }
 }

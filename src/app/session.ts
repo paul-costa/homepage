@@ -9,14 +9,12 @@ export interface ServerLink {
   icon?: string;
 }
 
-/** One header menu after sign-in */
+/** One section of the burger menu after sign-in */
 export interface ServerGroup {
   title: string;
   links: ServerLink[];
-  /** image in public/, e.g. logos/tailscale.svg; wins over icon */
+  /** image in public/ shown next to the title, e.g. logos/tailscale.svg */
   logo?: string;
-  /** Material Symbols name for the menu button, default "menu" */
-  icon?: string;
 }
 
 /** Firestore document private/server, readable only by admins */
