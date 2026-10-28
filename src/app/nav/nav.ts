@@ -20,8 +20,5 @@ export class Nav {
   protected readonly session = inject(Session);
   protected readonly projects = PROJECTS;
 
-  protected readonly userName = computed(() => {
-    const user = this.session.user();
-    return user?.displayName || user?.email || '';
-  });
+  protected readonly userName = computed(() => this.session.email());
 }
