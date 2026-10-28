@@ -19,7 +19,7 @@
     <a mat-menu-item [href]="project.url" target="_blank" rel="noopener"><mat-icon>{{ project.icon }}</mat-icon><span>{{ project.label }}</span></a>
   }
   <mat-divider />
-  @if (session.user()) {
+  @if (session.signedIn()) {
     @for (group of session.config()?.groups ?? []; track group.title) {
       <div class="heading">
         @if (group.logo) {
@@ -34,7 +34,7 @@
     }
     <div class="user">{{ userName() }}</div>
     <button mat-menu-item type="button" (click)="session.signOut()"><mat-icon>logout</mat-icon><span>Log out</span></button>
-  } @else if (session.user() === null) {
-    <button mat-menu-item type="button" (click)="session.signIn()"><img class="google" matMenuItemIcon src="logos/google.svg" alt="" width="18" height="18"><span>Sign in</span></button>
+  } @else if (session.signedIn() === false) {
+    <button mat-menu-item type="button" (click)="session.signIn()"><mat-icon>login</mat-icon><span>Sign in</span></button>
   }
 </mat-menu>

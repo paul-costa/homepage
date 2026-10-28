@@ -1,5 +1,4 @@
 import { Injectable, signal } from '@angular/core';
-import type { User } from 'firebase/auth';
 
 export interface ServerLink {
   label: string;
@@ -17,44 +16,50 @@ export interface ServerGroup {
   logo?: string;
 }
 
-/** Firestore document private/server, readable only by admins */
+/** /private/server.json on costaserver, served only behind Cloudflare Access */
 export interface ServerConfig {
   groups: ServerGroup[];
   llmMonitorUrl?: string;
 }
 
+/**
+ * Sign-in is Cloudflare Access on costapaul.com/private/*: only Paul's email gets a login code. Signed in, the
+ * Access cookie lets /private/server.json through; signed out, Access answers with a redirect to its login page,
+ * which fetch() sees as an opaque redirect.
+ */
 @Injectable({ providedIn: 'root' })
 export class Session {
-  /** undefined while Firebase has not answered yet */
-  readonly user = signal<User | null | undefined>(undefined);
+  /** undefined while checking, false when signed out */
+  readonly signedIn = signal<boolean | undefined>(undefined);
+  readonly email = signal('');
   readonly config = signal<ServerConfig | null>(null);
 
-  private readonly firebase = import('./firebase');
-
   constructor() {
-    // Sign-up is disabled in Firebase Auth, so only the existing admin account can sign in at all;
-    // any account the Firestore rules still reject is signed out right away
-    this.firebase.then(({ watchUser, loadServerConfig, signOutUser }) =>
-      watchUser(async (user) => {
-        this.config.set(null);
-        this.user.set(user);
-        if (!user) return;
-        try {
-          this.config.set(await loadServerConfig());
-        } catch (error) {
-          if ((error as { code?: string }).code === 'permission-denied') await signOutUser();
-        }
-      }),
-    );
+    this.load();
   }
 
-  async signIn() {
-    const { signInWithGoogle } = await this.firebase;
-    await signInWithGoogle().catch(() => undefined);
+  private async load() {
+    try {
+      const response = await fetch('/private/server.json', { redirect: 'manual', cache: 'no-store' });
+      if (response.ok && response.headers.get('content-type')?.includes('json')) {
+        this.config.set(await response.json());
+        this.signedIn.set(true);
+        const identity = await fetch('/cdn-cgi/access/get-identity', { cache: 'no-store' });
+        if (identity.ok) this.email.set((await identity.json()).email ?? '');
+        return;
+      }
+    } catch {
+      // offline or no JSON: treat as signed out
+    }
+    this.signedIn.set(false);
   }
 
-  async signOut() {
-    const { signOutUser } = await this.firebase;
-    await signOutUser();
+  /** /private/login/ is behind Access too; after the login code it sends the browser back home */
+  signIn() {
+    location.href = '/private/login/';
+  }
+
+  signOut() {
+    location.href = '/cdn-cgi/access/logout';
   }
 }
