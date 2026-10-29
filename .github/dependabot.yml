@@ -1,0 +1,25 @@
+# npm weekly, GitHub Actions monthly. Minor and patch updates come bundled in one pull request;
+# major jumps stay outside the groups and come one by one.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Vienna
+    groups:
+      npm:
+        patterns: ['*']
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: '06:00'
+      timezone: Europe/Vienna
+    groups:
+      actions:
+        patterns: ['*']
