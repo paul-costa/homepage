@@ -1,4 +1,4 @@
-# homepage
+# costapaul.com
 
 Paul Costa's personal page at [costapaul.com](https://costapaul.com): links to GitHub, the app store developer pages, LinkedIn and contact. The header links the public server flow and homeassistant flow; its burger menu lists the public projects (wedding.costa at [wedding.costapaul.com](https://wedding.costapaul.com), see `src/app/links.ts`) and the sign-in (Cloudflare Access), and after sign-in the private link groups (Tailscale, Links) and log out; the home page then shows the LLM activity on costaserver. Only Paul's email can sign in.
 
