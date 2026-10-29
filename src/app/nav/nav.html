@@ -1,11 +1,13 @@
-<nav class="infra" aria-label="Flows">
-  <a class="link" href="/infrastructure/" title="server flow" aria-label="server flow">
-    <mat-icon>dns</mat-icon><span>server<span class="suffix"> flow</span></span>
-  </a>
-  <a class="link" href="/infrastructure/homeassistant/" title="homeassistant flow" aria-label="homeassistant flow">
-    <mat-icon>home</mat-icon><span>homeassistant<span class="suffix"> flow</span></span>
-  </a>
-</nav>
+@if (session.signedIn()) {
+  <nav class="infra" aria-label="Flows">
+    <a class="link" href="/infrastructure/" title="server flow" aria-label="server flow">
+      <mat-icon>dns</mat-icon><span>server<span class="suffix"> flow</span></span>
+    </a>
+    <a class="link" href="/infrastructure/homeassistant/" title="homeassistant flow" aria-label="homeassistant flow">
+      <mat-icon>home</mat-icon><span>homeassistant<span class="suffix"> flow</span></span>
+    </a>
+  </nav>
+}
 
 <div class="account">
   <button class="icon-btn" type="button" [matMenuTriggerFor]="burgerMenu" title="Menu" aria-label="Menu">
