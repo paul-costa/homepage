@@ -47,5 +47,5 @@ Thumbs.db
 .firebase/
 *-debug.log
 
-# Private menu data (Tailscale links), written to Firestore by scripts/set-private-config.mjs
+# Private menu data (Tailscale links, LLM monitor URL); scripts/deploy.sh copies it to costaserver (/private/, behind Cloudflare Access)
 /private/
